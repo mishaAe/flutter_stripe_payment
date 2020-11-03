@@ -1234,8 +1234,20 @@ void initializeTPSPaymentNetworksWithConditionalMappings() {
     applePayCompletion = completion;
 
     STPAPIClient *stripeAPIClient = [self newAPIClient];
+    
+    [stripeAPIClient createPaymentMethodWithPayment:payment completion:^(STPPaymentMethod * _Nullable paymentMethod, NSError * _Nullable error) {
+        self->requestIsCompleted = YES;
+        
+        if (error) {
+            // Save for deffered use
+            self->applePayStripeError = error;
+            [self resolveApplePayCompletion:PKPaymentAuthorizationStatusFailure];
+        } else {
+            [self resolvePromise:[self convertPaymentMethod: paymentMethod]];
+        }
+    }];
 
-    [stripeAPIClient createTokenWithPayment:payment completion:^(STPToken * _Nullable token, NSError * _Nullable error) {
+    /*[stripeAPIClient createTokenWithPayment:payment completion:^(STPToken * _Nullable token, NSError * _Nullable error) {
         self->requestIsCompleted = YES;
 
         if (error) {
@@ -1254,7 +1266,7 @@ void initializeTPSPaymentNetworksWithConditionalMappings() {
 
             [self resolvePromise:result];
         }
-    }];
+    }];*/
 }
 
 
