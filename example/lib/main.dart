@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
 
     StripePayment.setOptions(StripeOptions(
         publishableKey: "pk_test_aSaULNS8cJU6Tvo20VAXy6rp",
-        merchantId: "Test",
+        merchantId: "novakid",
         androidPayMode: 'test'));
   }
 
@@ -218,7 +218,7 @@ class _MyAppState extends State<MyApp> {
                       items: [
                         ApplePayItem(
                           label: 'Test',
-                          amount: '13',
+                          amount: '1',
                         )
                       ],
                     ),
