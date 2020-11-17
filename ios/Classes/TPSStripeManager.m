@@ -862,8 +862,8 @@ void initializeTPSPaymentNetworksWithConditionalMappings() {
     [paymentRequest setPaymentSummaryItems:summaryItems];
     [paymentRequest setShippingMethods:shippingMethods];
     [paymentRequest setShippingType:shippingType];
-    NSString* appID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
-    [paymentRequest setMerchantIdentifier:[@"merchant." stringByAppendingString:appID]];
+    //NSString* appID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    //[paymentRequest setMerchantIdentifier:[@"merchant." stringByAppendingString:appID]];
 
     PKPaymentAuthorizationViewController *paymentAuthorizationVC = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:paymentRequest];
     paymentAuthorizationVC.delegate = self;
