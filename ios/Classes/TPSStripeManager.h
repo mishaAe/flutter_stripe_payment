@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <PassKit/PassKit.h>
-#import <Stripe/Stripe.h>
+@import Stripe;
 #import "RCTConvert.h"
+
 
 /**
  * Block that bridge modules use to resolve the JS promise waiting for a result.
